@@ -1,1 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid | Unblocked Games</title>
+    <style>
+        /* Base Styling & Theme */
+        :root {
+            --bg-color: #0f0f1a;
+            --card-bg: #181829;
+            --accent-color: #7000ff;
+            --text-color: #ffffff;
+            --text-secondary: #94a3b8;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 40px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--card-bg);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 25px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            border: 2px solid #2d2d44;
+            border-radius: 30px;
+            color: var(--text-color);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent-color);
+        }
+
+        /* Games Grid Container */
+        .games-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+        }
+
+        /* Individual Game Card */
+        .game-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* The Rounded Square Icon */
+        .game-icon {
+            width: 120px;
+            height: 120px;
+            background-color: var(--card-bg);
+            border-radius: 24px; /* Gives the premium rounded square look */
+            object-fit: cover;
+            border: 2px solid #2d2d44;
+            transition: border-color 0.3s ease;
+            transition: transform .2s;
+        }
+
+        .game-card:hover .game-icon {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        /* Game Title Styling */
+        .game-title {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* Cuts off long text nicely */
+        }
+
+        .game-card:hover .game-title {
+            color: var(--text-color);
+        }
+        
+        .game-overlay {
+             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 15, 26, 0.98);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+}
+
+        .game-container {
+            position: relative;
+            width: 90%;
+            height: 85%;
+            max-width: 1200px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 2px solid var(--accent-color);
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(112, 0, 255, 0.3);
+}
+        
+        .game-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+}
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.2s;
+            z-index: 1001;
+}
+        
+        .close-btn:hover {
+            background: #5500cc;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Asteroid <span>Games</span></a>
+    </header>
+
+    <div class="search-container">
+        <!-- Input field that triggers JavaScript filtering on input -->
+        <input type="text" id="searchBox" class="search-box" placeholder="Search games...">
+    </div>
+
+    <!-- The Grid where games are listed and filtered -->
+    <main class="games-grid" id="gamesGrid">
+        
+        <!-- Paper.io -->
+        <a href="paper.io.html" class="game-card" data-name="paper.io">
+            <img src="https://codehs.com/uploads/17ba93d3b3a21039851a8d3826b696ba" alt="paper.io" class="game-icon">
+            <span class="game-title">paper.io</span>
+        </a>
+
+        <!-- Retro Bowl -->
+        <a href="https://html5.gamedistribution.com/rvvASMiM/659090e00bfc4650899550d63f8a130d/index.html?gd_sdk_referrer_url=https%3A%2F%2Fwww.onlinegames.io%2Ftank-stars-1%2F&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2h0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tLzY1OTA5MGUwMGJmYzQ2NTA4OTk1NTBkNjNmOGExMzBkLz9nZF9zZGtfcmVmZXJyZXJfdXJsPWh0dHBzOi8vd3d3Lm9ubGluZWdhbWVzLmlvL3Rhbmstc3RhcnMtMS8iLCJwYXJlbnREb21haW4iOiJvbmxpbmVnYW1lcy5pbyIsInRvcERvbWFpbiI6Im9ubGluZWdhbWVzLmlvIiwiaGFzSW1wcmVzc2lvbiI6dHJ1ZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xOCJ9#goog_fullscreen_ad" class="game-card" data-name="tank stars">
+            <img src="https://img.gamedistribution.com/659090e00bfc4650899550d63f8a130d-512x512.jpg" alt="" class="game-icon">
+            <span class="game-title">Tank Stars</span>
+        </a>
+
+        <!-- Slope -->
+        <a href="Minecraft.html" class="game-card" data-name="minecraft">
+            <img src="https://codehs.com/uploads/9bce88368e1a4b4a79d972490ff974b1" alt="Slope" class="game-icon">
+            <span class="game-title">Minecraft</span>
+        </a>
+
+        </a>
+
+        <!-- Funny Shooter -->
+        <a href="Funny Shooter.html" class="game-card" data-name="funny shooter">
+            <img src="https://codehs.com/uploads/1b0cd18112947914e06cc3282759e7aa" alt="Funny Shooter" class="game-icon">
+            <span class="game-title">Funny Shooter</span>
+        </a>
+
+        <!-- Asteriods -->
+        <a href="Asteroids.html" class="game-card" data-name="asteroids">
+            <img src="https://codehs.com/uploads/c896c69950e722c8ec67fb866ae4b0db" alt="Asteroids" class="game-icon">
+            <span class="game-title">Asteroids</span>
+        </a>
+        <!-- Granny -->
+        <a href="Granny.html" class="game-card" data-name="granny">
+            <img src="https://codehs.com/uploads/f3a2e0ae4d05b0e1464c20c4e4d17979" alt="Asteroids" class="game-icon">
+            <span class="game-title">Granny</span>
+        </a>
+        <!-- baldi's basics -->
+        <a href="" class="game-card" data-name="baldys">
+            <img src="https://codehs.com/uploads/e5a1c83932b77a0336a9e781957b38f5" alt="Asteroids" class="game-icon">
+            <span class="game-title">Baldy's Basics</span>
+        </a>
+        </a>
+        <!-- moto xm3 -->
+        <a href="Moto.xm3.html" class="game-card" data-name="moto xm3">
+            <img src="https://codehs.com/uploads/4f2166c04a8385339c072a18c0f438b5" alt="Asteroids" class="game-icon">
+            <span class="game-title">Moto xm3</span>
+        <!-- Time Shooter -->
+        <a href="Time Shooter.html" class="game-card" data-name="time shooter">
+            <img src="https://img.gamedistribution.com/6493b872f0564380a7adad671d1e0a57-512x512.jpeg" alt="Asteroids" class="game-icon">
+            <span class="game-title">Time Shooter</span>
+        </a>
+    </main>
+
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const gameCards = document.querySelectorAll('.game-card');
+
+        // Listen for user typing in the search box
+        searchBox.addEventListener('input', () => {
+            const filterValue = searchBox.value.toLowerCase().trim();
+
+            gameCards.forEach(card => {
+                // Reads the custom 'data-name' attribute from the HTML
+                const gameName = card.getAttribute('data-name');
+
+                if (gameName.includes(filterValue)) {
+                    card.style.display = 'flex'; // Show matching game
+                } else {
+                    card.style.display = 'none'; // Hide non-matching game
+                }
+            });
+        });
+    </script>
+</body>
+</html>
